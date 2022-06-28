@@ -1,7 +1,7 @@
 <template>
 <!--  <div class="nav" v-on:click="highLight">-->
     <div>
-      <p1>Trang thông tin bất động sản</p1>
+      <p>Trang thông tin bất động sản</p>
 <!--    <router-link class="page-link" to="/">Trang thông tin bất động sản</router-link>-->
   </div>
 </template>

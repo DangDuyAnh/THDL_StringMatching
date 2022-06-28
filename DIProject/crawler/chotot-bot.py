@@ -22,7 +22,7 @@ driver = webdriver.Chrome(options=chrome_options ,service=ser)
 
 houseList = []
 c = 1
-for i in range(3, 63):
+for i in range(3, 123):
     try:
         print(i)
         url = "https://nha.chotot.com/mua-ban-nha-dat?page=" + str(i+1)

@@ -26,7 +26,7 @@ mainUrl = "https://batdongsan.com.vn/nha-dat-ban"
 
 houseList = []
 c = 1
-for i in range(1):
+for i in range(3, 123):
     url = "https://batdongsan.com.vn/nha-dat-ban/p" + str(i+1)
     driver.get(url)
     houseTags = driver.find_elements(by=By.CSS_SELECTOR, value=".js__product-link-for-product-id")

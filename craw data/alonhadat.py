@@ -53,6 +53,8 @@ for page in range(1,150,1):
 
       house['Gia'] = cu.find("span",{"class":"value"}).getText()
       print(house['Gia'])
+      cii = nahs.find("span",{"class":"square"})
+      house['Diện tích'] = cii.find("span",{"class":"value"}).getText()
       nahs1 = ha.find("div",{"class":"moreinfor1"})
       ci = nahs1.find("div",{"class":"infor"})
       ce = ci.find("table").find("tbody")

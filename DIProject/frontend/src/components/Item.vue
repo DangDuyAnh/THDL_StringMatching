@@ -1,109 +1,106 @@
 <template>
-  <div class="konten container is-fluid">
-    <div class="columns" v-for="house in houselist" v-bind:key="house.id">
-      <div class="column column is-11 is-offset-1 is-mobile">
-        <article class="media">
-<!--          <figure class="media-left" @click="onehouse(house._id)">-->
-<!--            <p class="image">-->
-<!--              <img :src="house.image" class="image">-->
-<!--            </p>-->
-<!--          </figure>-->
-          <div class="media-content">
-            <div class="content">
-              <h1 class="title" @click="onehouse(house._id)">{{house.name}}</h1>
-              <p class="subtitle" @click="onehouse(house._id)">{{house.location}}</p>
-              <p @click="onehouse(house._id)">{{house.description}}</p>
+  <div>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <figure class="image image is-square">
+          <img :src="image">
+        </figure>
+      </div>
+      <div class="column">
+        <h1 class="title">{{name}}</h1>
+        <h2 class="subtitle">{{location}}</h2>
+        <hr>
+        <p class="subtitle">{{description}}</p>
+        <hr>
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fa fa-bed"></i><br>Bedroom</p>
+              <p class="title">{{bedroom}}</p>
             </div>
           </div>
-<!--          <div class="media-right" v-if="house.seller._id == userId">-->
-<!--            <router-link-->
-<!--                :token="token"-->
-<!--                :to="{ name: 'edit', params: { id: house._id }}"-->
-<!--            >-->
-<!--              <i class="fa fa-edit"></i>-->
-<!--            </router-link>-->
-<!--            <button class="delete" @click="destroy(house._id)"></button>-->
-<!--          </div>-->
-        </article>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fa fa-bath"></i><br>Bathroom</p>
+              <p class="title">{{bathroom}}</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><i class="fa fa-spoon"></i><br>Kitchen</p>
+              <p class="title">{{kitchen}}</p>
+            </div>
+          </div>
+        </nav>
+        <hr>
+        <img :src="map" alt="map">
+        <hr>
+        <p class="heading">Contact</p>
+        <nav class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <p class="subtitle">{{seller.fullname}}</p>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item has-text-centered">
+              <p class="subtitle">{{seller.phone}}</p>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
-// import * as axios from 'axios';
+import * as axios from 'axios';
 export default {
-  name: 'itemComponent',
-  props: ['token', 'userId'],
-  data() {
+  name: 'house',
+  data () {
     return {
-      houselist: null
+      name: '',
+      description: '',
+      location: '',
+      image: '',
+      price: '',
+      bedroom: '',
+      bathroom: '',
+      kitchen: '',
+      map: '',
+      seller: [],
     }
   },
-  methods : {
-    onehouse: function (id) {
-      this.$router.push({ name: 'house', params: { id: id }})
-    },
-    getData() {
-      return [
-        {
-          id: "001",
-          name: "nha mat pho",
-          location: "1 dai co viet",
-          description: "mua di"
-        },
-        {
-          id: "002",
-          name: "nha mat tien",
-          location: "1 dai co viet",
-          description: "mua di"
-        }
-      ]
-    }
-    // destroy: function (id) {
-    //   axios.delete(`http://35.196.201.48/${id}`)
-    //       .then( function (resp) {
-    //         location.reload()
-    //       })
-    // }
-  },
-  created() {
-    this.houselist = this.getData()
+  created: function (){
+    let _this = this
+    axios.get(`http://35.196.201.48/houses/${_this.$route.params.id}`)
+        .then( function (resp) {
+          _this.name = resp.data.data[0].name
+          _this.description = resp.data.data[0].description
+          _this.location = resp.data.data[0].location
+          _this.image = resp.data.data[0].image
+          _this.price = resp.data.data[0].price
+          _this.bedroom = resp.data.data[0].bedroom
+          _this.bathroom = resp.data.data[0].bathroom
+          _this.kitchen = resp.data.data[0].kitchen
+          _this.seller = resp.data.data[0].seller
+          let locationMap = _this.location.split(' ').join('+')
+          axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+              address: _this.location
+            }
+          })
+              .then( function (resp) {
+                _this.map= '//maps.googleapis.com/maps/api/staticmap?size=900x200&maptype=roadmap&key=AIzaSyAos5IQmvJk_VoKzQuHQM1debRTobqELV4&center="'+resp.data.results[0].geometry.location.lat+","+resp.data.results[0].geometry.location.lng+'"&markers=color:blue%7Clabel:LOCATION%7C'+resp.data.results[0].geometry.location.lat+','+resp.data.results[0].geometry.location.lng
+              })
+        })
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.title {
-  border-left: 3px solid #31221F;
-  color: #31221F;
-  padding-left: 0.25em;
-}
-.column{
-  padding: 0.75em 0 !important;
-}
-.konten{
-  padding-top: 3em;
-}
-.media-content{
-  width: 100%;
-}
-img{
-  height: 100%;
-  width: auto;
-}
-article{
-  margin: 0 2em;
-  padding: 1em;
-  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-}
-p{
-  white-space: pre-wrap;
-}
-.image {
-  height: 200px;
-  width: 200px;
+<style lang="css" scoped>
+.columns{
+  padding: 2em 0;
 }
 </style>

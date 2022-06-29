@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TopHeader/>
-    <item-component/>
+    <item-list/>
 <!--    <div class="content-wrapper">-->
 <!--      <router-view/>-->
 <!--    </div>-->
@@ -10,13 +10,13 @@
 
 <script>
 import TopHeader from './components/Header.vue'
-import itemComponent from './components/Item.vue'
+import itemList from './components/ItemList.vue'
 
 export default {
   name: 'App',
   components: {
     TopHeader,
-    itemComponent
+    itemList,
   }
 }
 </script>

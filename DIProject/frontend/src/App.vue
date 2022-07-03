@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TopHeader/>
-    <item-list/>
+    <HomeView/>
 <!--    <div class="content-wrapper">-->
 <!--      <router-view/>-->
 <!--    </div>-->
@@ -10,13 +10,13 @@
 
 <script>
 import TopHeader from './components/Header.vue'
-import itemList from './components/ItemList.vue'
+import HomeView from "./views/HomeView";
 
 export default {
   name: 'App',
   components: {
     TopHeader,
-    itemList,
+    HomeView,
   }
 }
 </script>

@@ -1,106 +1,157 @@
 <template>
-  <div>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <figure class="image image is-square">
-          <img :src="image">
-        </figure>
+  <div class="item-box">
+    <div class="info">
+
+      <div class="image">
+        <img :src=house.Anh>
+        <div class="info1">
+          <h2 class="title">{{house.TieuDe}}</h2>
+          <h3 class="subtitle">{{house.DiaChi}}</h3>
+        </div>
       </div>
-      <div class="column">
-        <h1 class="title">{{name}}</h1>
-        <h2 class="subtitle">{{location}}</h2>
-        <hr>
-        <p class="subtitle">{{description}}</p>
-        <hr>
-        <nav class="level">
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading"><i class="fa fa-bed"></i><br>Bedroom</p>
-              <p class="title">{{bedroom}}</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading"><i class="fa fa-bath"></i><br>Bathroom</p>
-              <p class="title">{{bathroom}}</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="heading"><i class="fa fa-spoon"></i><br>Kitchen</p>
-              <p class="title">{{kitchen}}</p>
-            </div>
-          </div>
-        </nav>
-        <hr>
-        <img :src="map" alt="map">
-        <hr>
-        <p class="heading">Contact</p>
-        <nav class="level">
-          <div class="level-left">
-            <div class="level-item">
-              <p class="subtitle">{{seller.fullname}}</p>
-            </div>
-          </div>
-          <div class="level-right">
-            <div class="level-item has-text-centered">
-              <p class="subtitle">{{seller.phone}}</p>
-            </div>
-          </div>
-        </nav>
+
+      <div class="main-info">
+
+          <nav>
+            <p class="subtitle">{{house.MoTa}}</p>
+            <p class="subtitle">{{house.PhapLy}}</p>
+            <h3>{{house.MucGia}} VNĐ</h3>
+            <h3>{{house.DienTich}}</h3>
+          </nav>
+
+
       </div>
+      <div class="info">
+        <div class="contact">
+
+          <p class="subtitle">Số phòng ngủ: {{house.SoPhongNgu}}</p>
+          <p class="subtitle">Số phòng vệ sinh: {{house.SoToilet}}</p>
+          <p class="subtitle">Nội thất: {{house.NoiThat}}</p>
+          <p class="subtitle">Hướng nhà: {{house.HuongNha}}</p>
+
+          <h4 class="heading">Thông tin liên lạc</h4>
+        <p class="subtitle">Tên người bán: {{house.TenNguoiBan}}</p>
+        <p class="subtitle">SĐT: {{house.SoDienThoai}}</p>
+        <a :href="house.OriginalLink" target="_blank">Link bài bán gốc</a>
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
     </div>
 
   </div>
 </template>
 
 <script>
-import * as axios from 'axios';
+// import * as axios from 'axios';
 export default {
-  name: 'house',
-  data () {
-    return {
-      name: '',
-      description: '',
-      location: '',
-      image: '',
-      price: '',
-      bedroom: '',
-      bathroom: '',
-      kitchen: '',
-      map: '',
-      seller: [],
+  name: 'AItem',
+  props: {
+    house: {
+      OriginalLink: {
+        type: String,
+      },
+      TieuDe: {
+        type: String,
+      },
+      TenNguoiBan: {
+        type: String,
+      },
+      Anh:{
+        type: String,
+      },
+      SoDienThoai: {
+        type: String
+      },
+      DiaChi: {
+        type: String
+      },
+      MoTa: {
+        type: String
+      },
+      MucGia: {
+        type: Number
+      },
+      DienTich: {
+        type: Number
+      },
+      HuongNha: {
+        type: String
+      },
+      SoToilet: {
+        type: String
+      },
+      SoPhongNgu: {
+        type: String
+      },
+      PhapLy: {
+        type: String
+      },
+      NoiThat: {
+        type: String
+      }
     }
   },
   created: function (){
-    let _this = this
-    axios.get(`http://35.196.201.48/houses/${_this.$route.params.id}`)
-        .then( function (resp) {
-          _this.name = resp.data.data[0].name
-          _this.description = resp.data.data[0].description
-          _this.location = resp.data.data[0].location
-          _this.image = resp.data.data[0].image
-          _this.price = resp.data.data[0].price
-          _this.bedroom = resp.data.data[0].bedroom
-          _this.bathroom = resp.data.data[0].bathroom
-          _this.kitchen = resp.data.data[0].kitchen
-          _this.seller = resp.data.data[0].seller
-          let locationMap = _this.location.split(' ').join('+')
-          axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-            params: {
-              address: _this.location
-            }
-          })
-              .then( function (resp) {
-                _this.map= '//maps.googleapis.com/maps/api/staticmap?size=900x200&maptype=roadmap&key=AIzaSyAos5IQmvJk_VoKzQuHQM1debRTobqELV4&center="'+resp.data.results[0].geometry.location.lat+","+resp.data.results[0].geometry.location.lng+'"&markers=color:blue%7Clabel:LOCATION%7C'+resp.data.results[0].geometry.location.lat+','+resp.data.results[0].geometry.location.lng
-              })
-        })
+
   }
 }
 </script>
 
 <style lang="css" scoped>
-.columns{
-  padding: 2em 0;
+.item-box {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #b5b5b5;
+}
+.info {
+
+}
+.image {
+  width: 20em;
+  min-height: 20em;
+  max-height: auto;
+  float: left;
+  margin: 3px;
+  padding: 1em;
+}
+.img {
+  max-width: 100%;
+  height: auto;
+}
+.main-info {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 20em;
+  flex-direction: column;
+  /*position: absolute;*/
+  right: 0;
+  top: 25px;
+}
+.info {
+
+  display: flex;
+}
+.contact {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 20em;
+  flex-direction: column;
+  /*position: absolute;*/
+  right: 0;
+  top: 25px;
+}
+.level {
+  display: flex;
 }
 </style>

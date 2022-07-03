@@ -1,7 +1,7 @@
 <template>
 <!--  <div class="nav" v-on:click="highLight">-->
-    <div>
-      <p>Trang thông tin bất động sản</p>
+    <div class="title">
+      <p>TRANG THÔNG TIN BẤT ĐỘNG SẢN</p>
 <!--    <router-link class="page-link" to="/">Trang thông tin bất động sản</router-link>-->
   </div>
 </template>
@@ -21,14 +21,13 @@ export default {
 }
 </script>
 
-<style lang="css">
-/*.nav {*/
-/*  font-size: 30px;*/
-/*  font-weight: bold;*/
-/*  width: 300px;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  padding-left: 10px;*/
-/*  cursor: pointer;*/
-/*}*/
+<style lang="css" scoped>
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
 </style>

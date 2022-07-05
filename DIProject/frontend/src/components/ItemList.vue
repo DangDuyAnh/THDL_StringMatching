@@ -12,81 +12,81 @@ import Item from "./Item";
 export default {
   name: 'itemList',
   props: {
+    houseList: null,
   },
   components: {
     Item,
   },
-  data() {
-    return {
-      houseList: null,
-    }
-    // return {
-    //   houselist: getDat
-    // }
-  },
+  // data() {
+  //   return {
+  //     houseList: null,
+  //   }
+  //   // return {
+  //   //   houselist: getDat
+  //   // }
+  // },
   methods: {
-    getHouseList() {
-      return {
-        houseList: [
-          {
-            OriginalLink: 'https://google.com',
-            TieuDe: 'Nha mat pho',
-            TenNguoiBan: 'Larue',
-            Anh: '2',
-            SoDienThoai: '024923592',
-            DiaChi: '3 Dai Co Viet',
-            MoTa: 'Nha to dep',
-            MucGia: 450000000,
-            DienTich: '350m2',
-            HuongNha: 'Bac',
-            SoToilet: '4',
-            SoPhongNgu: '4',
-            PhapLy: 'Khong co van de phap ly',
-            NoiThat: 'Noi that day du'
-          },
-          {
-            OriginalLink: '',
-            TieuDe: '',
-            TenNguoiBan: '',
-            Anh: '',
-            SoDienThoai: '',
-            DiaChi: '',
-            MoTa: '',
-            MucGia: 0,
-            DienTich: '',
-            HuongNha: '',
-            SoToilet: '',
-            SoPhongNgu: '',
-            PhapLy: '',
-            NoiThat: ''
-          },
-          {
-            OriginalLink: 'https://google.com',
-            TieuDe: 'Nha mat pho',
-            TenNguoiBan: 'Larue',
-            Anh: '2',
-            SoDienThoai: '024923592',
-            DiaChi: '3 Dai Co Viet',
-            MoTa: 'Nha to dep',
-            MucGia: 450000000,
-            DienTich: '350m2',
-            HuongNha: 'Bac',
-            SoToilet: '4',
-            SoPhongNgu: '4',
-            PhapLy: 'Khong co van de phap ly',
-            NoiThat: 'Noi that day du'
-          },
-        ]
-      }
-    }
+  //   getHouseList() {
+  //     return {
+  //       houseList: [
+  //         {
+  //           OriginalLink: 'https://google.com',
+  //           TieuDe: 'Nha mat pho',
+  //           TenNguoiBan: 'Larue',
+  //           Anh: '2',
+  //           SoDienThoai: '024923592',
+  //           DiaChi: '3 Dai Co Viet',
+  //           MoTa: 'Nha to dep',
+  //           MucGia: 450000000,
+  //           DienTich: '350m2',
+  //           HuongNha: 'Bac',
+  //           SoToilet: '4',
+  //           SoPhongNgu: '4',
+  //           PhapLy: 'Khong co van de phap ly',
+  //           NoiThat: 'Noi that day du'
+  //         },
+  //         {
+  //           OriginalLink: '',
+  //           TieuDe: '',
+  //           TenNguoiBan: '',
+  //           Anh: '',
+  //           SoDienThoai: '',
+  //           DiaChi: '',
+  //           MoTa: '',
+  //           MucGia: 0,
+  //           DienTich: '',
+  //           HuongNha: '',
+  //           SoToilet: '',
+  //           SoPhongNgu: '',
+  //           PhapLy: '',
+  //           NoiThat: ''
+  //         },
+  //         {
+  //           OriginalLink: 'https://google.com',
+  //           TieuDe: 'Nha mat pho ',
+  //           TenNguoiBan: 'Larue',
+  //           Anh: '2',
+  //           SoDienThoai: '024923592',
+  //           DiaChi: '3 Dai Co Viet',
+  //           MoTa: 'Nha to dep',
+  //           MucGia: 450000000,
+  //           DienTich: '350m2',
+  //           HuongNha: 'Bac',
+  //           SoToilet: '4',
+  //           SoPhongNgu: '4',
+  //           PhapLy: 'Khong co van de phap ly',
+  //           NoiThat: 'Noi that day du'
+  //         },
+  //       ]
+  //     }
+  //   }
   },
   computed : {
 
   },
-  mounted() {
-    this.houseList = this.getHouseList().houseList
-    console.log(this.houseList)
-  }
+  // mounted() {
+  //   this.houseList = this.getHouseList().houseList
+  // }
 }
 </script>
 

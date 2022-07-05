@@ -8,13 +8,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: HomeView,
-        children: [
-            {
-                path: '/',
-                component: index
-            }
-        ]
+        component: HomeView
     }
 ]
 

@@ -85,12 +85,12 @@ export default {
 
 }
 .image {
-  /*width: 20em;*/
-  /*height: 20em;*/
-  /*display: inline-block;*/
-  /*float: left;*/
-  /*margin: 3px;*/
-  /*padding: 1em;*/
+  width: 20em;
+  height: 20em;
+  display: inline-block;
+  float: left;
+  margin: 3px;
+  padding: 1em;
   img {
     display: block;
     max-width:230px;

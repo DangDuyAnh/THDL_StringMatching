@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <div class="left-box">
-      <LeftBar/>
+      <LeftBar
+          @pageFilter="pageFilter"
+      />
       <Pagination
           :current-page="currentPage"
           :total="total"
@@ -11,10 +13,13 @@
       />
     </div>
     <div class="right-box">
-      <div class="item-list">
+      <div v-if="hasData" class="item-list">
         <ItemList
           :houseList="getRenderHouse(currentPage)"
         />
+      </div>
+      <div v-else>
+        <p>Không tìm thấy dữ liệu phù hợp</p>
       </div>
     </div>
   </div>
@@ -45,6 +50,10 @@ export default {
       houseList: [],
       firstIndex: 0,
       lastIndex: this.numOfHousesPerPage - 1,
+      hasData: true,
+      field: {
+
+      }
     }
   },
   methods: {
@@ -55,6 +64,32 @@ export default {
             // {
             //   page: this.currentPage
             // }
+        );
+        console.log(response.data.houselist)
+        // JSON responses are automatically parsed.
+        this.houseList = response.data.houselist;
+        this.total = response.data.soLuong;
+        this.totalPages = Math.ceil(this.total / this.numOfHousesPerPage);
+        console.log(this.totalPages)
+        console.log(this.total)
+        console.log(this.houseList)
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async searchData(field) {
+      try {
+        const response = await this.$http.post(
+            "http://localhost:5000/house-filter",
+            {
+              giaMin: field.minPrice,
+              giaMax: field.maxPrice,
+              tieuDe: field.title,
+              thanhPho: field.city,
+              quan: field.district,
+              dienTichMin: field.minSquare,
+              dienTichMax: field.maxSquare
+            }
         );
         console.log(response.data.houselist)
         // JSON responses are automatically parsed.
@@ -83,11 +118,16 @@ export default {
       this.firstIndex = (page - 1) * this.numOfHousesPerPage;
       this.lastIndex = Math.min(page * this.numOfHousesPerPage - 1, this.total - 1);
     },
+    pageFilter(field) {
+      console.log(field)
+      this.searchData(field)
+    },
   },
   computed: {
 
   },
   mounted() {
+    console.log("Hi")
     this.getData()
   }
 }

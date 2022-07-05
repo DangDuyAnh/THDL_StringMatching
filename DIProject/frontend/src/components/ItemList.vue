@@ -1,128 +1,132 @@
 <template>
   <div class="">
     <div class="list" v-for="house in houseList" v-bind:key="house.TieuDe">
-      <Item :house="house"/>
+      <div class="item-box">
+        <div class="info">
+
+          <div class="image">
+            <img v-if="house.Anh" :src=get1ImageLink(house.Anh)>
+          </div>
+
+          <div class="main-info">
+
+            <div class="info1">
+              <a :href="'/house/'+house._id" class="title">{{house.TieuDe}}</a>
+              <p class="subtitle">{{house.DiaChi}}</p>
+            </div>
+
+            <nav>
+              <h3 v-if="house.MucGia">{{house.MucGia}} triệu VNĐ</h3>
+              <h3>{{house.DienTich}} m2</h3>
+            </nav>
+
+
+          </div>
+          <div class="info">
+            <div class="contact">
+
+              <h4 class="heading">Thông tin liên lạc</h4>
+              <p class="subtitle">Tên người bán: {{house.TenNguoiBan}}</p>
+              <p class="subtitle">SĐT: {{house.SoDienThoai}}</p>
+              <a :href="house.OriginalLink" target="_blank">Link bài bán gốc</a>
+            </div>
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+<!--      <Item :house="house"/>-->
     </div>
   </div>
 </template>
 
 <script>
 // import * as axios from 'axios';
-import Item from "./Item";
+// import Item from "./Item";
 export default {
   name: 'itemList',
   props: {
     houseList: null,
   },
   components: {
-    Item,
+    // Item,
   },
-  // data() {
-  //   return {
-  //     houseList: null,
-  //   }
-  //   // return {
-  //   //   houselist: getDat
-  //   // }
-  // },
   methods: {
-  //   getHouseList() {
-  //     return {
-  //       houseList: [
-  //         {
-  //           OriginalLink: 'https://google.com',
-  //           TieuDe: 'Nha mat pho',
-  //           TenNguoiBan: 'Larue',
-  //           Anh: '2',
-  //           SoDienThoai: '024923592',
-  //           DiaChi: '3 Dai Co Viet',
-  //           MoTa: 'Nha to dep',
-  //           MucGia: 450000000,
-  //           DienTich: '350m2',
-  //           HuongNha: 'Bac',
-  //           SoToilet: '4',
-  //           SoPhongNgu: '4',
-  //           PhapLy: 'Khong co van de phap ly',
-  //           NoiThat: 'Noi that day du'
-  //         },
-  //         {
-  //           OriginalLink: '',
-  //           TieuDe: '',
-  //           TenNguoiBan: '',
-  //           Anh: '',
-  //           SoDienThoai: '',
-  //           DiaChi: '',
-  //           MoTa: '',
-  //           MucGia: 0,
-  //           DienTich: '',
-  //           HuongNha: '',
-  //           SoToilet: '',
-  //           SoPhongNgu: '',
-  //           PhapLy: '',
-  //           NoiThat: ''
-  //         },
-  //         {
-  //           OriginalLink: 'https://google.com',
-  //           TieuDe: 'Nha mat pho ',
-  //           TenNguoiBan: 'Larue',
-  //           Anh: '2',
-  //           SoDienThoai: '024923592',
-  //           DiaChi: '3 Dai Co Viet',
-  //           MoTa: 'Nha to dep',
-  //           MucGia: 450000000,
-  //           DienTich: '350m2',
-  //           HuongNha: 'Bac',
-  //           SoToilet: '4',
-  //           SoPhongNgu: '4',
-  //           PhapLy: 'Khong co van de phap ly',
-  //           NoiThat: 'Noi that day du'
-  //         },
-  //       ]
-  //     }
-  //   }
+    get1ImageLink(image_paths) {
+      const arr = image_paths.split(',')
+      return arr[0]
+    },
   },
   computed : {
 
   },
-  // mounted() {
-  //   this.houseList = this.getHouseList().houseList
-  // }
+  mounted() {
+  }
 }
 </script>
 
 <style scoped>
-/*.title {*/
-/*  border-left: 3px solid #31221F;*/
-/*  color: #31221F;*/
-/*  padding-left: 0.25em;*/
-/*}*/
-/*.column{*/
-/*  padding: 0.75em 0 !important;*/
-/*}*/
-/*.konten{*/
-/*  padding-top: 3em;*/
-/*}*/
-/*.media-content{*/
-/*  width: 100%;*/
-/*}*/
-/*img{*/
-/*  height: 100%;*/
-/*  width: auto;*/
-/*}*/
-/*article{*/
-/*  margin: 0 2em;*/
-/*  padding: 1em;*/
-/*  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);*/
-/*  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);*/
-/*}*/
-/*p{*/
-/*  white-space: pre-wrap;*/
-/*}*/
-/*.image {*/
-/*  height: 200px;*/
-/*  width: 200px;*/
-/*}*/
-/*.list {*/
-/*  display: flex;*/
-/*}*/
+.item-box {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #b5b5b5;
+}
+.info {
+
+}
+.image {
+  /*width: 20em;*/
+  /*height: 20em;*/
+  /*display: inline-block;*/
+  /*float: left;*/
+  /*margin: 3px;*/
+  /*padding: 1em;*/
+  img {
+    display: block;
+    max-width:230px;
+    max-height:95px;
+    width: auto;
+    height: auto;
+  }
+}
+.main-info {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 20em;
+  flex-direction: column;
+  /*position: absolute;*/
+  right: 0;
+  top: 25px;
+}
+.info {
+
+  display: flex;
+}
+.contact {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 20em;
+  flex-direction: column;
+  /*position: absolute;*/
+  right: 0;
+  top: 25px;
+}
+.title {
+  font-size: 20px;
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+
+}
 </style>
+

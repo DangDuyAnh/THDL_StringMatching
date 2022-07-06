@@ -20,7 +20,6 @@
           Previous
         </button>
       </li>
-      <br>
       <li
           v-for="page in pages"
           :key="page.name"
@@ -35,8 +34,6 @@
           {{ page.name }}
         </button>
       </li>
-
-      <br>
 
       <li class="pagination-item">
         <button
@@ -158,6 +155,8 @@ export default {
 .pagination-card {
   display: flex;
   justify-content: flex-end;
+  margin-top: 2em;
+  margin-right: 2em;
 }
 .pagination {
   list-style-type: none;

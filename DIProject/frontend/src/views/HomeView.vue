@@ -1,15 +1,9 @@
 <template>
   <div class="home">
+    <div class="box">
     <div class="left-box">
       <LeftBar
           @pageFilter="pageFilter"
-      />
-      <Pagination
-          :current-page="currentPage"
-          :total="total"
-          :per-page="numOfHousesPerPage"
-          :total-pages="totalPages"
-          @pagechanged="onPageChange"
       />
     </div>
     <div class="right-box">
@@ -17,10 +11,18 @@
         <ItemList
           :houseList="getRenderHouse(currentPage)"
         />
+        <Pagination
+            :current-page="currentPage"
+            :total="total"
+            :per-page="numOfHousesPerPage"
+            :total-pages="totalPages"
+            @pagechanged="onPageChange"
+        />
       </div>
       <div v-else>
         <p>Không tìm thấy dữ liệu phù hợp</p>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -127,7 +129,6 @@ export default {
 
   },
   mounted() {
-    console.log("Hi")
     this.getData()
   }
 }
@@ -135,27 +136,47 @@ export default {
 
 <style>
 .home {
-  /*background-color: peachpuff;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  background-color: #DFE7E7;
+}
+.box {
+  background-color: white;
+  display: flex;
+  margin-left: 15em;
+  margin-right: 15em;
+  margin-top: 5em;
 }
 .right-box {
-  padding-right: 2em;
-  width: 100%;
-  height: calc(100% - 70px);
-  box-sizing: border-box;
-  position: relative;
-  height: 350px;
-  display: flex;
+  /*padding-right: 2em;*/
+  /*width: 100%;*/
+  /*height: calc(100% - 70px);*/
+  /*box-sizing: border-box;*/
+  /*position: relative;*/
+  /*height: 350px;*/
+  /*flex: 1;*/
+  /*display: flex;*/
+  -webkit-box-flex: 4;
+  -ms-flex: 4;
+  flex: 3;
+  padding-left: 40px;
 }
 .left-box {
-  width: 30%;
-  height: 100%;
-  color: black;
-  /*opacity: 0;*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  flex-direction: column;
+  /*width: 30%;*/
+  /*height: 100%;*/
+  /*color: black;*/
+  /*flex: 1;*/
+  /*!*opacity: 0;*!*/
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*font-size: 30px;*/
+  /*flex-direction: column;*/
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 2;
+  padding-right: 40px;
+  border-right: 1px solid #eee;
 }
 </style>

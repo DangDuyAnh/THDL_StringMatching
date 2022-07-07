@@ -1,16 +1,13 @@
 <template>
-<!--  <div class="nav" v-on:click="highLight">-->
+  <div id="bannerimage">
     <div id="header">
-      <div id="bannerimage">
-        <div id="header">
-          <span>
-            <h1>TRANG THÔNG TIN BẤT ĐỘNG SẢN</h1>
-          </span>
-        </div>
-      </div>
+      <span>
+        <h1>TRANG THÔNG TIN BẤT ĐỘNG SẢN</h1>
+      </span>
+    </div>
+  </div>
 
 <!--    <router-link class="page-link" to="/">Trang thông tin bất động sản</router-link>-->
-  </div>
 </template>
 
 <script>
@@ -38,11 +35,18 @@ export default {
   padding-left: 10px;
 }
 #bannerimage {
-  width: 100%;
-  background-image: url('../assets/pngtree-technology-city-banner-background-image_261645.jpg');
-  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/pngtree-technology-city-banner-background-image_261645.jpg');
+  height: 50%;
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
+
+  /*width: 100%;*/
+  /*background-image: url('../assets/pngtree-technology-city-banner-background-image_261645.jpg');*/
+  /*height: 100%;*/
+  /*background-position: center;*/
+  /*position: relative;*/
 }
 #header {
   height: auto;

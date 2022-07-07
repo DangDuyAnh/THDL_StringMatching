@@ -1,15 +1,17 @@
 <template>
   <div class="home">
     <div class="box">
-    <div class="left-box">
-      <LeftBar
-          @pageFilter="pageFilter"
-      />
-    </div>
+      <aside>
+<!--        <div class="left-box">-->
+          <LeftBar
+              @pageFilter="pageFilter"
+          />
+<!--        </div>-->
+      </aside>
     <div class="right-box">
       <div v-if="hasData" class="item-list">
         <ItemList
-          :houseList="getRenderHouse(currentPage)"
+          :houseList="houseList"
         />
         <Pagination
             :current-page="currentPage"
@@ -61,21 +63,26 @@ export default {
   methods: {
     async getData() {
       try {
-        const response = await this.$http.post(
-            "http://localhost:5000/house-list"
-            // {
-            //   page: this.currentPage
-            // }
+        const response1 = await this.$http.post(
+            "http://localhost:5000/get-total"
+        )
+        this.total = response1.data.soLuong
+        const response2 = await this.$http.post(
+            "http://localhost:5000/house-list",
+            {
+              page: this.currentPage
+            }
         );
-        console.log(response.data.houselist)
+        console.log(response2.data.houselist)
         // JSON responses are automatically parsed.
-        this.houseList = response.data.houselist;
-        this.total = response.data.soLuong;
+        this.houseList = response2.data.houselist;
+        // this.total = response.data.soLuong;
         this.totalPages = Math.ceil(this.total / this.numOfHousesPerPage);
         console.log(this.totalPages)
         console.log(this.total)
         console.log(this.houseList)
       } catch (error) {
+        this.hasData = false;
         console.log(error);
       }
     },
@@ -105,20 +112,21 @@ export default {
         console.log(error);
       }
     },
-    getRenderHouse() {
-      let first = this.firstIndex
-      let last = this.lastIndex
-      if (this.houseList != null) {
-        return this.houseList.slice(first, last + 1);
-      } else {
-        return []
-      }
-    },
+    // getRenderHouse() {
+    //   let first = this.firstIndex
+    //   let last = this.lastIndex
+    //   if (this.houseList != null) {
+    //     return this.houseList.slice(first, last + 1);
+    //   } else {
+    //     return []
+    //   }
+    // },
     onPageChange(page) {
       // console.log(page)
       this.currentPage = page;
-      this.firstIndex = (page - 1) * this.numOfHousesPerPage;
-      this.lastIndex = Math.min(page * this.numOfHousesPerPage - 1, this.total - 1);
+      this.getData();
+      // this.firstIndex = (page - 1) * this.numOfHousesPerPage;
+      // this.lastIndex = Math.min(page * this.numOfHousesPerPage - 1, this.total - 1);
     },
     pageFilter(field) {
       console.log(field)
@@ -134,7 +142,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="css">
 .home {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -147,6 +155,7 @@ export default {
   margin-left: 15em;
   margin-right: 15em;
   margin-top: 5em;
+  border-radius: 10px;
 }
 .right-box {
   /*padding-right: 2em;*/
@@ -173,10 +182,20 @@ export default {
   /*align-items: center;*/
   /*font-size: 30px;*/
   /*flex-direction: column;*/
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 2;
-  padding-right: 40px;
-  border-right: 1px solid #eee;
+
+  /*-webkit-box-flex: 1;*/
+  /*-ms-flex: 1;*/
+  /*flex: 2;*/
+  /*padding-right: 40px;*/
+  /*border-right: 1px solid #eee;*/
+
+  /*padding-right: 7em;*/
+  /*padding-left: 1em;*/
+  /*border-right: 1px solid #eee;*/
+  /*font-size: 15px;*/
+}
+
+aside {
+
 }
 </style>

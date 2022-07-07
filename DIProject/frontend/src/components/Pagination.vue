@@ -157,6 +157,7 @@ export default {
   justify-content: flex-end;
   margin-top: 2em;
   margin-right: 2em;
+  margin-bottom: 2em;
 }
 .pagination {
   list-style-type: none;

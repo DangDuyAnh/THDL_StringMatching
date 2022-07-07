@@ -1,25 +1,21 @@
 <template>
   <div class="left-box">
+
       <div class="label-input">
+        <h3>Tìm kiếm nâng cao</h3>
         <input type="text" placeholder="Tiêu đề" v-model="field.title"><br><br>
-      </div>
-      <div class="label-input">
         <input type="text" placeholder="Tỉnh/Thành phố" v-model="field.city"><br><br>
-      </div>
-      <div class="label-input">
         <input type="text" placeholder="Quận/Huyện" v-model="field.district"><br><br>
-      </div>
-      <div class="label-input-2">
-        <input type="number" placeholder="Giá lọc từ ... VNĐ" v-model="field.minPrice"><br><br>
-        <input type="number" placeholder="đến ... VNĐ" v-model="field.maxPrice"><br><br>
-      </div>
-      <div class="label-input-2">
-        <input type="number" placeholder="Diện tích từ ... m2" v-model="field.minSquare"><br><br>
-        <input type="number" placeholder="đến ... m2" v-model="field.maxSquare"><br><br>
-      </div>
-      <div class="label-input">
-        <button class="button" @click="handleFilter">Lọc</button>
-      </div>
+        <label>Lọc theo giá: </label>
+        <input type="number" placeholder="Nhỏ nhất" v-model="field.minPrice"><br><br>
+        <input type="number" placeholder="Lớn nhất" v-model="field.maxPrice"><br><br>
+        <label>Lọc theo diện tích: </label>
+        <input type="number" placeholder="Nhỏ nhất: " v-model="field.minSquare"><br><br>
+        <input type="number" placeholder="Lớn nhất" v-model="field.maxSquare"><br><br>
+        <div class="label-input">
+          <button class="button" @click="handleFilter">Lọc</button>
+        </div>
+  </div>
   </div>
 </template>
 
@@ -75,42 +71,226 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 .left-box {
   font-size: 15px;
   align-items: center;
   justify-content: center;
+  padding-left: 2em;
+  padding-right: 13em;
+  //padding-left: 1em;
+  //font-size: 15px;
 }
-input {
-  padding: 0.3em;
-  width: 10em;
-  margin-right: 1em;
+//input {
+//  padding: 0.3em;
+//  width: 10em;
+//  margin-right: 1em;
+//}
+//label {
+//  font-size: 16px;
+//}
+.button {
+  background: darken(#DFE7E7, 10%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: -1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #F5F5F5;
+  cursor: pointer;
+  &:hover {
+    background: #89C2C2;
+    transition: all .4s ease-in-out;
+  }
 }
-label {
-  font-size: 16px;
-}
-.label-input {
-  display: flex;
-  align-items: flex-start;
-  width: 10em;
-}
+//.label-input {
+//  display: flex;
+//  align-items: flex-start;
+//  width: 10em;
+//}
 .label-input-2 {
   display: flex;
   align-items: flex-start;
   width: 5em;
 }
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 0.8em 1em;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  cursor: pointer;
-  width: 5em;
-  margin-right: 1em;
-  margin-left: auto;
+.label-input {
+  margin-bottom: 5px;
+  width: 330%;
+  input {
+    border-radius: 4px;
+    height: 40px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 120%;
+    margin: 0.5em;
+    &.has-error {
+      color: red !important;
+      border: 1px solid red;
+    }
+    &::placeholder,
+    &::-webkit-input-placeholder,
+    &:-ms-input-placeholder {
+      color: #8F9BB3;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+      padding-left: 5px;
+    }
+    &:disabled {
+      background-color: #DDD;
+    }
+    .right-input {
+      float: right;
+    }
+  }
+  &.is-one-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    label {
+      display: block;
+      width: 150px;
+    }
+  }
+  &.flex-column {
+    display: flex;
+    flex-direction: column;
+    label {
+      color: #3366ff;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 16px;
+    }
+  }
+  &.subinformations {
+    display: flex;
+    flex-direction: column;
+    label {
+      color: #808080;
+      font-size: 11px;
+      font-weight: bold;
+      line-height: 5px;
+    }
+    .value {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+  .select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    line-height: 3;
+    background: #F8F9FA;
+    overflow: hidden;
+    border: 1px solid #e1e7ec;
+    border-radius: 24px;
+    .select-value {
+      position: absolute;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 20px;
+      color: #222B45;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background: #F8F9FA;
+      background-image: none;
+      flex: 1;
+      padding: 0 .5em;
+      color: #fff;
+      cursor: pointer;
+      width: 100%;
+      &::-ms-expand {
+        display: none;
+      }
+      option {
+        color: black
+      }
+    }
+    &::after {
+      content: '\2304';
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 1em;
+      background: #F8F9FA;
+      cursor: pointer;
+      pointer-events: none;
+      -webkit-transition: .25s all ease;
+      -o-transition: .25s all ease;
+      transition: .25s all ease;
+      line-height: 30px;
+    }
+    &:hover::after {
+      color: #ffe74c;
+    }
+  }
+  input[type=checkbox] {
+    display: none;
+    &:disabled+label {
+      color: #808080;
+      cursor: default !important;
+    }
+    &:disabled+label:before {
+      background-color: #e8e8e8;
+      cursor: default !important;
+    }
+    &+label {
+      display: block;
+      margin: 0.2em;
+      cursor: pointer;
+      padding: 0.2em;
+      color: #222B45;
+      font-size: 15px;
+      line-height: 24px;
+      font-weight: 600;
+      &:before {
+        content: "\2714";
+        border: 0.1em solid #8992A3;
+        border-radius: 0.2em;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        vertical-align: bottom;
+        color: transparent;
+        transition: .2s;
+        line-height: 16px;
+        text-align: center;
+      }
+      &:active:before {
+        transform: scale(0);
+      }
+    }
+    &:checked+label:before {
+      background-color: #3366ff;
+      border-color: #3366ff;
+      color: white;
+    }
+    &:disabled+label:before {
+      transform: scale(1);
+      border-color: #aaa;
+    }
+    &:checked:disabled+label:before {
+      transform: scale(1);
+      background-color: #bfb;
+      border-color: #bfb;
+    }
+  }
 }
 </style>

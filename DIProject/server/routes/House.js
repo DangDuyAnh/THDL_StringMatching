@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/house-list", asyncWrapper(houseController.list))
+router.post("/get-total", asyncWrapper(houseController.total))
 router.get("/house-detail/:id", asyncWrapper(houseController.search))
 router.post("/house-filter", asyncWrapper(houseController.filter))
   

@@ -29,6 +29,22 @@ houseController.list = async (req, res, next) => {
     }
 }
 
+houseController.total = async (req, res, next) => {
+    try {
+        const count = await HouseModel.countDocuments()
+        return res.status(200).json({
+            soLuong: count
+        })
+
+    }
+    catch (e) {
+        return res.status(500).json({
+            message: e.message
+        });
+    }
+}
+
+
 houseController.search = async (req, res, next) => {
     try {
         const house = await HouseModel.findById(req.params.id)

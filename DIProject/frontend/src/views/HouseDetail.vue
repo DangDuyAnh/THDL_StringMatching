@@ -60,6 +60,7 @@
 
 
 <!--      </div>-->
+      <div class="info">
 
       <h3>THÔNG TIN CHI TIẾT</h3>
       <div class="table-wrapper">
@@ -137,14 +138,19 @@
             <tr>
               <th>Bài viết gốc</th>
               <td>
-                <p><a :href="house.OriginalLink" target="_blank">Link</a></p>
+                <a :href="house.OriginalLink" target="_blank">
+                  <div class="buttons">
+                    <button class="add">Link</button>
+                  </div>
+                </a>
+<!--                <p><a :href="house.OriginalLink" target="_blank">Link</a></p>-->
               </td>
             </tr>
           </tbody>
         </table>
 
 
-      </div>
+      </div></div>
     </div>
 
   </div>
@@ -278,6 +284,23 @@ th, td {
   padding-left: 3em;
   p {
     font-size: 18px;
+  }
+}
+button {
+  background: darken(#A3B8CA, 10%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: 10px 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #F5F5F5;
+  cursor: pointer;
+  &:hover {
+    background: #89C2C2;
+    transition: all .4s ease-in-out;
   }
 }
 </style>

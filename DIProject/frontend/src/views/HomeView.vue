@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="box">
-      <aside>
+      <aside v-if="hasData">
 <!--        <div class="left-box">-->
           <LeftBar
               @pageFilter="pageFilter"
@@ -21,9 +21,9 @@
             @pagechanged="onPageChange"
         />
       </div>
-      <div v-else>
-        <p>Không tìm thấy dữ liệu phù hợp</p>
-      </div>
+<!--      <div v-else>-->
+<!--        <p>Không tìm thấy dữ liệu phù hợp</p>-->
+<!--      </div>-->
     </div>
     </div>
   </div>
@@ -63,6 +63,7 @@ export default {
   methods: {
     async getData() {
       try {
+        this.hasData = false;
         const response1 = await this.$http.post(
             "http://localhost:5000/get-total"
         )
@@ -81,6 +82,7 @@ export default {
         console.log(this.totalPages)
         console.log(this.total)
         console.log(this.houseList)
+        this.hasData = true;
       } catch (error) {
         this.hasData = false;
         console.log(error);

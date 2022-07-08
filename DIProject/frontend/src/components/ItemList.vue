@@ -133,7 +133,7 @@ img {
 }
 
 button {
-  background: darken($light, 10%);
+  background: darken(#A3B8CA, 10%);
   padding: 10px;
   display: inline-block;
   outline: 0;

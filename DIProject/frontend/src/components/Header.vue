@@ -2,7 +2,8 @@
   <div id="bannerimage">
     <div id="header">
       <span>
-        <h1>TRANG THÔNG TIN BẤT ĐỘNG SẢN</h1>
+        <a href="/home">TRANG THÔNG TIN BẤT ĐỘNG SẢN</a>
+<!--        <h1>TRANG THÔNG TIN BẤT ĐỘNG SẢN</h1>-->
       </span>
     </div>
   </div>
@@ -52,11 +53,19 @@ export default {
   height: auto;
   padding: 100px 100px;
   margin-top: 0;
-}
-h1 {
-  color: white;
   text-align: center;
+}
+/*h1 {*/
+/*  color: white;*/
+/*  text-align: center;*/
+/*  font-family: Arial;*/
+/*}*/
+a {
+  color: white;
   font-family: Arial;
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
 }
 span {
 

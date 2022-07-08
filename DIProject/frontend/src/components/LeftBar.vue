@@ -6,10 +6,10 @@
         <input type="text" placeholder="Tiêu đề" v-model="field.title"><br><br>
         <input type="text" placeholder="Tỉnh/Thành phố" v-model="field.city"><br><br>
         <input type="text" placeholder="Quận/Huyện" v-model="field.district"><br><br>
-        <label>Lọc theo giá: </label>
+        <label>Lọc theo giá (triệu VNĐ): </label>
         <input type="number" placeholder="Nhỏ nhất" v-model="field.minPrice"><br><br>
         <input type="number" placeholder="Lớn nhất" v-model="field.maxPrice"><br><br>
-        <label>Lọc theo diện tích: </label>
+        <label>Lọc theo diện tích (m<sup>2</sup>): </label>
         <input type="number" placeholder="Nhỏ nhất: " v-model="field.minSquare"><br><br>
         <input type="number" placeholder="Lớn nhất" v-model="field.maxSquare"><br><br>
         <div class="label-input">
@@ -79,6 +79,7 @@ export default {
   justify-content: center;
   padding-left: 2em;
   padding-right: 13em;
+  width: 20%;
   //padding-left: 1em;
   //font-size: 15px;
 }
@@ -91,7 +92,7 @@ export default {
 //  font-size: 16px;
 //}
 .button {
-  background: darken(#DFE7E7, 10%);
+  background: darken(#A3B8CA, 10%);
   padding: 10px;
   display: inline-block;
   outline: 0;
@@ -128,25 +129,25 @@ export default {
     -moz-box-sizing: border-box;
     width: 120%;
     margin: 0.5em;
-    &.has-error {
-      color: red !important;
-      border: 1px solid red;
-    }
-    &::placeholder,
-    &::-webkit-input-placeholder,
-    &:-ms-input-placeholder {
-      color: #8F9BB3;
-      font-size: 15px;
-      line-height: 20px;
-      font-weight: 400;
-      padding-left: 5px;
-    }
-    &:disabled {
-      background-color: #DDD;
-    }
-    .right-input {
-      float: right;
-    }
+    //&.has-error {
+    //  color: red !important;
+    //  border: 1px solid red;
+    //}
+    //&::placeholder,
+    //&::-webkit-input-placeholder,
+    //&:-ms-input-placeholder {
+    //  color: #8F9BB3;
+    //  font-size: 15px;
+    //  line-height: 20px;
+    //  font-weight: 400;
+    //  padding-left: 5px;
+    //}
+    //&:disabled {
+    //  background-color: #DDD;
+    //}
+    //.right-input {
+    //  float: right;
+    //}
   }
   &.is-one-line {
     display: flex;
@@ -157,140 +158,140 @@ export default {
       width: 150px;
     }
   }
-  &.flex-column {
-    display: flex;
-    flex-direction: column;
-    label {
-      color: #3366ff;
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 16px;
-    }
-  }
-  &.subinformations {
-    display: flex;
-    flex-direction: column;
-    label {
-      color: #808080;
-      font-size: 11px;
-      font-weight: bold;
-      line-height: 5px;
-    }
-    .value {
-      font-size: 12px;
-      line-height: 14px;
-    }
-  }
-  .select {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 40px;
-    line-height: 3;
-    background: #F8F9FA;
-    overflow: hidden;
-    border: 1px solid #e1e7ec;
-    border-radius: 24px;
-    .select-value {
-      position: absolute;
-      height: 40px;
-      line-height: 40px;
-      padding-left: 20px;
-      color: #222B45;
-      font-size: 15px;
-      font-weight: 600;
-    }
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -ms-appearance: none;
-      appearance: none;
-      outline: 0;
-      box-shadow: none;
-      border: 0 !important;
-      background: #F8F9FA;
-      background-image: none;
-      flex: 1;
-      padding: 0 .5em;
-      color: #fff;
-      cursor: pointer;
-      width: 100%;
-      &::-ms-expand {
-        display: none;
-      }
-      option {
-        color: black
-      }
-    }
-    &::after {
-      content: '\2304';
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 0 1em;
-      background: #F8F9FA;
-      cursor: pointer;
-      pointer-events: none;
-      -webkit-transition: .25s all ease;
-      -o-transition: .25s all ease;
-      transition: .25s all ease;
-      line-height: 30px;
-    }
-    &:hover::after {
-      color: #ffe74c;
-    }
-  }
-  input[type=checkbox] {
-    display: none;
-    &:disabled+label {
-      color: #808080;
-      cursor: default !important;
-    }
-    &:disabled+label:before {
-      background-color: #e8e8e8;
-      cursor: default !important;
-    }
-    &+label {
-      display: block;
-      margin: 0.2em;
-      cursor: pointer;
-      padding: 0.2em;
-      color: #222B45;
-      font-size: 15px;
-      line-height: 24px;
-      font-weight: 600;
-      &:before {
-        content: "\2714";
-        border: 0.1em solid #8992A3;
-        border-radius: 0.2em;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        vertical-align: bottom;
-        color: transparent;
-        transition: .2s;
-        line-height: 16px;
-        text-align: center;
-      }
-      &:active:before {
-        transform: scale(0);
-      }
-    }
-    &:checked+label:before {
-      background-color: #3366ff;
-      border-color: #3366ff;
-      color: white;
-    }
-    &:disabled+label:before {
-      transform: scale(1);
-      border-color: #aaa;
-    }
-    &:checked:disabled+label:before {
-      transform: scale(1);
-      background-color: #bfb;
-      border-color: #bfb;
-    }
-  }
+  //&.flex-column {
+  //  display: flex;
+  //  flex-direction: column;
+  //  label {
+  //    color: #3366ff;
+  //    font-size: 12px;
+  //    font-weight: bold;
+  //    line-height: 16px;
+  //  }
+  //}
+  //&.subinformations {
+  //  display: flex;
+  //  flex-direction: column;
+  //  label {
+  //    color: #808080;
+  //    font-size: 11px;
+  //    font-weight: bold;
+  //    line-height: 5px;
+  //  }
+  //  .value {
+  //    font-size: 12px;
+  //    line-height: 14px;
+  //  }
+  //}
+  //.select {
+  //  position: relative;
+  //  display: flex;
+  //  width: 100%;
+  //  height: 40px;
+  //  line-height: 3;
+  //  background: #F8F9FA;
+  //  overflow: hidden;
+  //  border: 1px solid #e1e7ec;
+  //  border-radius: 24px;
+  //  .select-value {
+  //    position: absolute;
+  //    height: 40px;
+  //    line-height: 40px;
+  //    padding-left: 20px;
+  //    color: #222B45;
+  //    font-size: 15px;
+  //    font-weight: 600;
+  //  }
+  //  select {
+  //    -webkit-appearance: none;
+  //    -moz-appearance: none;
+  //    -ms-appearance: none;
+  //    appearance: none;
+  //    outline: 0;
+  //    box-shadow: none;
+  //    border: 0 !important;
+  //    background: #F8F9FA;
+  //    background-image: none;
+  //    flex: 1;
+  //    padding: 0 .5em;
+  //    color: #fff;
+  //    cursor: pointer;
+  //    width: 100%;
+  //    &::-ms-expand {
+  //      display: none;
+  //    }
+  //    option {
+  //      color: black
+  //    }
+  //  }
+  //  &::after {
+  //    content: '\2304';
+  //    position: absolute;
+  //    top: 0;
+  //    right: 0;
+  //    padding: 0 1em;
+  //    background: #F8F9FA;
+  //    cursor: pointer;
+  //    pointer-events: none;
+  //    -webkit-transition: .25s all ease;
+  //    -o-transition: .25s all ease;
+  //    transition: .25s all ease;
+  //    line-height: 30px;
+  //  }
+  //  &:hover::after {
+  //    color: #ffe74c;
+  //  }
+  //}
+  //input[type=checkbox] {
+  //  display: none;
+  //  &:disabled+label {
+  //    color: #808080;
+  //    cursor: default !important;
+  //  }
+  //  &:disabled+label:before {
+  //    background-color: #e8e8e8;
+  //    cursor: default !important;
+  //  }
+  //  &+label {
+  //    display: block;
+  //    margin: 0.2em;
+  //    cursor: pointer;
+  //    padding: 0.2em;
+  //    color: #222B45;
+  //    font-size: 15px;
+  //    line-height: 24px;
+  //    font-weight: 600;
+  //    &:before {
+  //      content: "\2714";
+  //      border: 0.1em solid #8992A3;
+  //      border-radius: 0.2em;
+  //      display: inline-block;
+  //      width: 20px;
+  //      height: 20px;
+  //      margin-right: 10px;
+  //      vertical-align: bottom;
+  //      color: transparent;
+  //      transition: .2s;
+  //      line-height: 16px;
+  //      text-align: center;
+  //    }
+  //    &:active:before {
+  //      transform: scale(0);
+  //    }
+  //  }
+  //  &:checked+label:before {
+  //    background-color: #3366ff;
+  //    border-color: #3366ff;
+  //    color: white;
+  //  }
+  //  &:disabled+label:before {
+  //    transform: scale(1);
+  //    border-color: #aaa;
+  //  }
+  //  &:checked:disabled+label:before {
+  //    transform: scale(1);
+  //    background-color: #bfb;
+  //    border-color: #bfb;
+  //  }
+  //}
 }
 </style>

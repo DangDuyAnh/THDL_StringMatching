@@ -7,7 +7,7 @@
             @click="onClickFirstPage"
             :disabled="isInFirstPage"
         >
-          First
+          Trang đầu
         </button>
       </li>
 
@@ -17,7 +17,7 @@
             @click="onClickPreviousPage"
             :disabled="isInFirstPage"
         >
-          Previous
+          Trang trước
         </button>
       </li>
       <li
@@ -41,7 +41,7 @@
             @click="onClickNextPage"
             :disabled="isInLastPage"
         >
-          Next
+          Trang tiếp
         </button>
       </li>
 
@@ -51,7 +51,7 @@
             @click="onClickLastPage"
             :disabled="isInLastPage"
         >
-          Last
+          Trang cuối
         </button>
       </li>
     </ul>
@@ -165,10 +165,28 @@ export default {
 
 .pagination-item {
   display: inline-block;
+  padding: 10px;
 }
 
 .active {
   background-color: lightblue;
   color: #ffffff;
+}
+button {
+  background: darken(#899EAF, 10%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: -1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #F5F5F5;
+  cursor: pointer;
+  &:hover {
+    background: #89C2C2;
+    transition: all .4s ease-in-out;
+  }
 }
 </style>

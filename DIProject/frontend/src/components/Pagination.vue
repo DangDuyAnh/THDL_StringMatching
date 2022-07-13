@@ -3,21 +3,23 @@
     <ul class="pagination">
       <li class="pagination-item">
         <button
+            class="button2"
             type="button"
             @click="onClickFirstPage"
             :disabled="isInFirstPage"
         >
-          Trang đầu
+          <i class="fa-solid fa-angles-left"></i>
         </button>
       </li>
 
       <li class="pagination-item">
         <button
+            class="button2"
             type="button"
             @click="onClickPreviousPage"
             :disabled="isInFirstPage"
         >
-          Trang trước
+          <i class="fa-solid fa-chevron-left"></i>
         </button>
       </li>
       <li
@@ -26,6 +28,7 @@
           class="pagination-item"
       >
         <button
+            class="button1"
             type="button"
             @click="onClickPage(page.name)"
             :disabled="page.isDisabled"
@@ -37,21 +40,23 @@
 
       <li class="pagination-item">
         <button
+            class="button2"
             type="button"
             @click="onClickNextPage"
             :disabled="isInLastPage"
         >
-          Trang tiếp
+          <i class="fa-solid fa-angle-right"></i>
         </button>
       </li>
 
       <li class="pagination-item">
         <button
+            class="button2"
             type="button"
             @click="onClickLastPage"
             :disabled="isInLastPage"
         >
-          Trang cuối
+          <i class="fa-solid fa-angles-right"></i>
         </button>
       </li>
     </ul>
@@ -152,9 +157,10 @@ export default {
 
 
 <style lang="scss">
+@import url('../assets/fontawesome-free-6.1.1/css/all.min.css');
 .pagination-card {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 2em;
   margin-right: 2em;
   margin-bottom: 2em;
@@ -172,7 +178,7 @@ export default {
   background-color: lightblue;
   color: #ffffff;
 }
-button {
+.button1 {
   background: darken(#899EAF, 10%);
   padding: 10px;
   display: inline-block;
@@ -183,6 +189,23 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #F5F5F5;
+  cursor: pointer;
+  &:hover {
+    background: #89C2C2;
+    transition: all .4s ease-in-out;
+  }
+}
+.button2 {
+  background: darken(#FFFFFF, 10%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: -1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #54697A;
   cursor: pointer;
   &:hover {
     background: #89C2C2;

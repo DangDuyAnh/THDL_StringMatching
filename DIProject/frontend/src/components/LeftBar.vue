@@ -107,6 +107,7 @@ export default {
     background: #89C2C2;
     transition: all .4s ease-in-out;
   }
+  margin-left: 8px;
 }
 //.label-input {
 //  display: flex;
@@ -129,6 +130,8 @@ export default {
     -moz-box-sizing: border-box;
     width: 120%;
     margin: 0.5em;
+    border: 1px solid #b5b5b5;
+    padding-left: 10px;
     //&.has-error {
     //  color: red !important;
     //  border: 1px solid red;
